@@ -324,6 +324,20 @@ class _StoryState extends State<Story> with SingleTickerProviderStateMixin {
             onLongPressUp: _onLongPressEnd,
           ),
         ),
+        Positioned(
+          top: 0,
+          left: widget.enableTapGesture
+              ? 0
+              : MediaQuery.of(context).size.width - 40,
+          right: 0,
+          bottom: 0,
+          child: GestureDetector(
+            onTapDown: _onTapDown,
+            onTapUp: _onTapUp,
+            onLongPress: _onLongPress,
+            onLongPressUp: _onLongPressEnd,
+          ),
+        ),
       ],
     );
   }
