@@ -218,6 +218,14 @@ class _StoryState extends State<Story> with SingleTickerProviderStateMixin {
     _controller.forward();
   }
 
+  void _onTapUpNext(TapUpDetails details) {
+    _switchToNextOrFinish();
+  }
+
+  void _onTapUpPrev(TapUpDetails details) {
+    _switchToPrevOrFinish();
+  }
+
   Future<void> _hideStatusBar() =>
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   Future<void> _showStatusBar() =>
@@ -327,7 +335,7 @@ class _StoryState extends State<Story> with SingleTickerProviderStateMixin {
           bottom: 0,
           child: GestureDetector(
             onTapDown: _onTapDown,
-            onTapUp: _onTapUp,
+            onTapUp: _onTapUpPrev,
             onLongPress: _onLongPress,
             onLongPressUp: _onLongPressEnd,
           ),
@@ -341,7 +349,7 @@ class _StoryState extends State<Story> with SingleTickerProviderStateMixin {
           bottom: 0,
           child: GestureDetector(
             onTapDown: _onTapDown,
-            onTapUp: _onTapUp,
+            onTapUp: _onTapUpNext,
             onLongPress: _onLongPress,
             onLongPressUp: _onLongPressEnd,
           ),
