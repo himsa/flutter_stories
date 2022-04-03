@@ -57,6 +57,7 @@ class Story extends StatefulWidget {
     this.topOffset,
     this.fullscreen = true,
     this.enableTapGesture = true,
+    this.progressHorizontalPadding = 8.0,
   })  : assert(momentCount > 0),
         assert(momentSwitcherFraction >= 0),
         assert(momentSwitcherFraction < double.infinity),
@@ -134,6 +135,11 @@ class Story extends StatefulWidget {
   /// Controls enableTapGesture behavior
   ///
   final bool enableTapGesture;
+
+  ///
+  /// Controls enableTapGesture behavior
+  ///
+  final double progressHorizontalPadding;
 
   static Widget instagramProgressSegmentBuilder(
           BuildContext context, int index, double progress, double gap) =>
@@ -274,8 +280,10 @@ class _StoryState extends State<Story> with SingleTickerProviderStateMixin {
         ),
         Positioned(
           top: widget.topOffset ?? MediaQuery.of(context).padding.top,
-          left: 8.0 - widget.progressSegmentGap / 2,
-          right: 8.0 - widget.progressSegmentGap / 2,
+          left:
+              widget.progressHorizontalPadding - widget.progressSegmentGap / 2,
+          right:
+              widget.progressHorizontalPadding - widget.progressSegmentGap / 2,
           child: AnimatedOpacity(
             opacity: _isInFullscreenMode ? 0.0 : 1.0,
             duration: widget.progressOpacityDuration,
